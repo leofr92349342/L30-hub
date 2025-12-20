@@ -259,6 +259,7 @@ AddScriptButton("Slap Battles", function() loadstring(game:HttpGet("https://raw.
 AddScriptButton("99 nights in the forest", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua"))() end)
 AddScriptButton("reach script", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/leofr92349342/mm/refs/heads/main/r"))() end)
 AddScriptButton("tp hub", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/leofr92349342/tp/refs/heads/main/tp"))() end)
+AddScriptButton("Blind Shot", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/leofr92349342/blind-shot/refs/heads/main/blind%20shot"))() end)
 
 -- Search
 SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
